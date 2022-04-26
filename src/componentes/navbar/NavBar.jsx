@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
-import Icon from "../icons/Icon"
+import CardWidget from "../cards/CardWidget"
+
 
 const NavBar = () => {
 
@@ -34,8 +35,8 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <div>
-                        <Icon />
+                    <div className="d-flex me-2">
+                        <CardWidget />
                     </div>
                     <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Buscar productos..." aria-label="Search" />
