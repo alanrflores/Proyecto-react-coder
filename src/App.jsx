@@ -7,14 +7,10 @@ const App = () => {
     return (
         <>
            
-                <NavBar />
-                
-                <div className="container">
-                 
-                 <Outlet />
-             
-                 <ItemListContainer />
-                 
+                <NavBar />               
+                <div className="container">                
+                 <Outlet />            
+                 <ItemListContainer />                 
                 </div>
             
         </>
