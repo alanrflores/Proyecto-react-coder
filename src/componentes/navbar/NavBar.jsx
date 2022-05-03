@@ -1,19 +1,20 @@
 import { NavLink } from "react-router-dom"
 import CardWidget from "../cards/CardWidget"
-import { FaShoppingBag } from "react-icons/fa"
+import { FaShoppingBag, FaGamepad } from "react-icons/fa"
 
 
 const NavBar = () => {
 
-    const imaGe =
-        "https://th.bing.com/th/id/OIP.qRgxMaC5Pmm0bmN9GexXCAHaD4?pid=ImgDet&rs=1"
+    const imgUrl = 
+    "https://i.etsystatic.com/10010751/r/il/c16b42/2371207824/il_794xN.2371207824_dx4i.jpg"
+
 
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <img src={imaGe} alt="" className="me-4" style={{ width: "3rem" }} />
-                <a className="navbar-brand" href="#">Tec. Coder</a>
+                <img src={imgUrl} alt="" className="me-4" style={{ width: "3rem"}} />
+                <a className="navbar-brand border border-success rounded-pill p-2" href="#"><h6 className="fw-bold fst-italic">CoderGames</h6></a>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -26,14 +27,14 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse " id="navbarTogglerDemo02">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                        <li>
-                            <NavLink className="nav-link" to="/">
+                        <li className="me-4">
+                            <NavLink className="nav-link fst-italic" to="/">
                                 Home
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className="nav-link" to="/Products">
-                                Products
+                        <li className="ms-4">
+                            <NavLink className="nav-link fst-italic" to="/Games">
+                                Games
                             </NavLink>
                         </li>
                     </ul>
@@ -45,8 +46,8 @@ const NavBar = () => {
                         />
                     </div>
                     <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search products..." aria-label="Search" />
-                        <button className="btn btn-dark" type="submit">Buscar</button>
+                        <input className="form-control me-2 fst-italic" type="search" placeholder="Search Games..." aria-label="Search" />
+                        <button className="btn btn-dark fst-italic" type="submit">Search</button>
                     </form>
                 </div>
             </div>
