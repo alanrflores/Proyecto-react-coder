@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import App from './App';
-import Inicio from './routes/Inicio';
-import Productos from './routes/Productos';
+import Home from './routes/Home';
+import Products from './routes/Products';
 
 
 
@@ -18,8 +18,8 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-       <Route index element={<Inicio/>} /> 
-       <Route path="productos" element={<Productos />} />
+       <Route index element={<Home/>} /> 
+       <Route path="products" element={<Products />} />
        </Route>
     </Routes>
   </BrowserRouter>
