@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import CardWidget from "../cards/CardWidget"
-import { FaShoppingBag, FaGamepad } from "react-icons/fa"
+import { FaShoppingBag} from "react-icons/fa"
 
 
 const NavBar = () => {
@@ -26,7 +26,7 @@ const NavBar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse " id="navbarTogglerDemo02">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="me-4">
                             <NavLink className="nav-link fst-italic" to="/">
                                 Home

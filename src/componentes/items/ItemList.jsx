@@ -1,26 +1,30 @@
 import Item from "./Item"
 
-
 const ItemList = ({ items }) => {
-   // console.log(items)
+    // console.log(items)
     return (
-        <div className="d-flex flex-row">
-            {
-                items?.length > 0 &&
-                    (items.map((item, i) => (
-                        <div key={i} className="mt-4">
-                            <Item
-                                id={item.id}
-                                title={item.title}
-                                picture={item.pictureUrl}
-                                price={item.price}
-                                description={item.description}
-                            />
-                        </div>
-                    ))) 
-                    
-            }
+         <div className="container-fluid">
+        <div className="d-flex justify-content-center align-items-center flex-wrap mt-4 p-2">
+           
+            
+                {
+                    items.length > 0 ?
+                        (items.map((item, i) => (   
+                                <Item
+                                    id={item.id}
+                                    title={item.title}
+                                    picture={item.pictureUrl}
+                                    stock={item.stock}
+                                    price={item.price}
+                                    description={item.description}
+                                />
+                        ))) : (
+                            <h3>Cargando....</h3>
+                        )
 
+                }
+      
+        </div>
         </div>
     )
 }
