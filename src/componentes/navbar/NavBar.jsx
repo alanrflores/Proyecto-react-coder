@@ -33,7 +33,7 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                         <li className="ms-4">
-                            <NavLink className="nav-link fst-italic" to="/Games">
+                            <NavLink className="nav-link fst-italic" to="/games">
                                 Games
                             </NavLink>
                         </li>

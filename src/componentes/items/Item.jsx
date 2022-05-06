@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 
 const Item = ({ id, title, picture, price, description, stock }) => {
 
@@ -11,7 +12,11 @@ const Item = ({ id, title, picture, price, description, stock }) => {
                     <p className="card-text mt-2">{description}<br />
                         <span className="fw-bold"> ARS ${price}</span>
                     </p>
-                    <a href="#" className="btn btn-outline-success fw-bold">More Details</a>
+                    <NavLink
+                        to={`detail/${id}`}
+                        className="btn btn-outline-success fw-bold">
+                        More Details
+                    </NavLink>
                 </div>
             </div>
         </div>
