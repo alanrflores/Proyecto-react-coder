@@ -24,15 +24,17 @@ const ItemDetailContainer = () => {
                 .then((res) => setProduct(res))
                 .catch((err) => console.log(err))
         }
-    }, [])
+    }, [id])
 
-    console.log(product)
+    //console.log(product)
     return (
         <> 
+           
            {
-             product.hasOwnProperty("title") ?   
+             product.hasOwnProperty("title") ? 
+               
            (<ItemDetail product= {product}/>) 
-           : (<h2>Loading....</h2>)
+           : (<h4 className="fst-italic text-white">Loading....</h4>)
 
         }
             

@@ -20,10 +20,10 @@ export const data = [
     },
     {
       id: 3,
-      title: "Call Of Duty (Zombies)",
+      title: "Call Of Duty (Black-Ops)",
       stock: 8,
       description: "It is a first-person shooter war video game set in the most momentous battles of World War II.",
-      pictureUrl: "https://www.callofduty.com/content/dam/atvi/callofduty/blackops4/zombies/hero/zombies-header-logo.png",
+      pictureUrl: "https://www.pngmart.com/files/2/Call-of-Duty-Black-Ops-PNG-Pic.png",
       price: 3500,
       platforms: "Pc, Xbox series, PlayStation 5"
 

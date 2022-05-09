@@ -2,10 +2,10 @@ import ItemListContainer from "../componentes/items/ItemListContainer"
 
 const Games = () => {
     return (
-        <div className="">
-            <h1 className="fw-bold text-center mt-4">Coder Games</h1>
+        <>
+            <h1 className=" text-center text-white fst-italic fs-3 border-bottom rounded-pill">Games</h1>
             <ItemListContainer />
-        </div>
+        </>
     )
 }
 

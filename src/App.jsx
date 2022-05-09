@@ -1,17 +1,25 @@
-import { Outlet } from "react-router-dom"
-import NavBar from "./componentes/navbar/NavBar"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import ItemDetailContainer from "./componentes/items/ItemDetailContainer"
+import Layout from "./componentes/Layout"
+import Games from "./views/Games"
+import Home from "./views/Home"
+
+
+
 
 
 const App = () => {
 
     return (
-        <>
-                <NavBar />               
-                <div className="container">                
-                 <Outlet />                           
-                </div>
-            
-        </>
+        <BrowserRouter>
+            <Routes>
+                    <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="/games" element={<Games />}></Route>
+                    <Route path="games/detail/:id" element={<ItemDetailContainer />} />
+                    </Route>
+            </Routes>
+        </BrowserRouter>
     )
 }
 

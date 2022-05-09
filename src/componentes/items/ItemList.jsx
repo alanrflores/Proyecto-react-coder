@@ -3,8 +3,8 @@ import Item from "./Item"
 const ItemList = ({ items }) => {
     //console.log(items)
     return (
-         <div className="container-fluid">
-        <div className="d-flex justify-content-center align-items-center flex-wrap mt-4 p-2">           
+         <div className="row">
+        <div className="d-flex justify-content-center align-items-center flex-wrap mt-3 p-1">           
             
                 {
                     items.length > 0 ?
@@ -18,7 +18,7 @@ const ItemList = ({ items }) => {
                                     description={item.description}
                                 />                       
                         ))) : (
-                            <h3>Loading....</h3>
+                            <h3 className="fst-italic fs-5 text text-white">Loading....</h3>
                         )
 
                 }

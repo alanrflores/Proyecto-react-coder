@@ -1,20 +1,23 @@
 import { NavLink } from "react-router-dom"
 import CardWidget from "../cards/CardWidget"
-import { FaShoppingBag} from "react-icons/fa"
+import { FaShoppingBag } from "react-icons/fa"
 
 
 const NavBar = () => {
 
-    const imgUrl = 
-    "https://i.etsystatic.com/10010751/r/il/c16b42/2371207824/il_794xN.2371207824_dx4i.jpg"
+    const imgUrl =
+        "https://goodgamesguild.com/front/ggg/200x200.png"
 
 
     return (
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
             <div className="container-fluid">
-                <img src={imgUrl} alt="" className="me-4" style={{ width: "3rem"}} />
-                <a className="navbar-brand border border-success rounded-pill p-2" href="#"><h6 className="fw-bold fst-italic">CoderGames</h6></a>
+                <img src={imgUrl} alt="" className="me-2" style={{ width: "3rem" }} />
+                <a className="navbar-brand  border-start rounded-pill p-2"
+                    href="#">
+                    <h6 className="fw-bold fst-italic">CoderGames</h6>
+                </a>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -32,22 +35,22 @@ const NavBar = () => {
                                 Home
                             </NavLink>
                         </li>
-                        <li className="ms-4">
+                        <li className="me-4">
                             <NavLink className="nav-link fst-italic" to="/games">
                                 Games
                             </NavLink>
                         </li>
                     </ul>
-                    <div className="d-flex me-2">
-                        <CardWidget 
-                        Icon={FaShoppingBag} 
-                        color={"green"}
-                        size={"20px"}
+                    <div className="d-flex m-2 me-1">
+                        <CardWidget
+                            Icon={FaShoppingBag}
+                            color={"green"}
+                            size={"20px"}
                         />
                     </div>
                     <form className="d-flex">
                         <input className="form-control me-2 fst-italic" type="search" placeholder="Search Games..." aria-label="Search" />
-                        <button className="btn btn-dark fst-italic" type="submit">Search</button>
+                        <button className="btn btn-dark fst-italic border-end" type="submit">Search</button>
                     </form>
                 </div>
             </div>

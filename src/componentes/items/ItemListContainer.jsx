@@ -29,14 +29,12 @@ const ItemListContainer = (props) => {
     }
   }, [])
 
-  const keyDown = (e) =>{
-    console.log(e)
-  }
+  
 
   return (
     <>
       <div className="mt-2 text-center">
-        <h1>ItemListContainer</h1>
+        
         {/* <ItemCount
         counter={counter}
         setCounter={setCounter}
