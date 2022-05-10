@@ -4,10 +4,6 @@ import Layout from "./componentes/Layout"
 import Games from "./views/Games"
 import Home from "./views/Home"
 
-
-
-
-
 const App = () => {
 
     return (

@@ -1,26 +1,47 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
-const Item = ({ id, title, picture, price, description, stock }) => {
-
-    return (
-        <div className="m-2 fst-italic text-white">
-            <div className="card shadow bg-dark border-0 rounded" style={{ width: "12rem" }}>
-                <img src={picture} style={{ width: "195px", height: "185px" }} className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">{title}</h5><hr />
-                    <span className="fw-bold border-bottom rounded-pill p-1">Stock: {stock}</span>
-                    <p className="card-text mt-2">{description}<br />
-                        <span className="fw-bold"> ARS ${price}</span>
-                    </p>
-                    <NavLink
-                        to={`detail/${id}`}
-                        className="btn btn-outline-success fw-bold">
-                        More Details
-                    </NavLink>
-                </div>
+const Item = ({ id, title, picture, price, stock }) => {
+  return (
+    <>
+  
+      <div class="row row-cols-1 row-cols-md-2 g-4 text-white">
+        <div class="col">
+          <div class="card shadow bg-dark border-0 m-2">
+            <img src={picture} class="card-img-top img-fluid"  alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{title}</h5>
+              <p class="card-text">
+                <NavLink
+                  to={`detail/${id}`}
+                  className="btn btn-outline-warning border-0 fs-6 fw-bold"
+                >
+                  More Details
+                </NavLink>
+              </p>
             </div>
+          </div>
         </div>
-    )
-}
+        <div class="col">
+          <div class="card shadow bg-dark border-0 m-2">
+            <img src={picture} class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{title}</h5>
+              <p class="card-text">
+                <NavLink
+                  to={`detail/${id}`}
+                  className="btn btn-outline-warning border-0 fs-6 fw-bold"
+                >
+                  More Details
+                </NavLink>
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+    
+    </>
+  );
+};
 
-export default Item
+export default Item;

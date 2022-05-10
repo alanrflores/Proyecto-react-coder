@@ -1,49 +1,37 @@
-
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { data } from "../helpers/data";
 
-
 const ItemListContainer = (props) => {
-
-  const [items, setItems] = useState([])
-
-
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-
     const Promises = new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(data)
+        resolve(data);
         //console.log(data)
       }, 2000);
     });
 
-    Promises
-      .then((res) => setItems(res))
-      .catch((err) => console.log(err))
+    Promises.then((res) => setItems(res)).catch((err) => console.log(err));
 
-
-    return () => {
-
-    }
-  }, [])
-
-  
+    return () => {};
+  }, []);
 
   return (
     <>
-      <div className="mt-2 text-center">
-        
-        {/* <ItemCount
+      <div className="container">
+        <div className="text-center">
+          {/* <ItemCount
         counter={counter}
         setCounter={setCounter}
       /> */}
 
-        <ItemList items={items} />
+          <ItemList items={items} />
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ItemListContainer
+export default ItemListContainer;
