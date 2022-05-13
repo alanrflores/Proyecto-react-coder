@@ -1,33 +1,34 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContextProvider";
+
 
 const ItemDetail = ({ product }) => {
-  const [counter, setCounter] = useState(1);
-  const [onAdd, setOnAdd] = useState([]);
-
-  let cartStorage = localStorage.getItem("cart");
-
-  useEffect(() => {
-    if (cartStorage) {
-      let cartParse = JSON.parse(cartStorage);
-      setOnAdd(cartParse);
-    }
-  }, []);
-
-  const cartAdd = () => {
-    if (cartStorage) {
-      let cartParse = JSON.parse(cartStorage);
-      cartParse.push(product);
-      setOnAdd(cartParse);
-      localStorage.removeItem("cart");
-      localStorage.setItem("cart", JSON.stringify(cartParse));
-    } else {
-      setOnAdd([...onAdd, product]);
-      localStorage.setItem("cart", JSON.stringify([...onAdd, product]));
-    }
-  };
-
+   const {cart, counter, setCounter, addCart} = useContext(CartContext)
+   
+   const addItems= (product) => {
+  // setCart([...cart, product])
+  //    if(cart?.length > 0) {
+  //      cart.forEach(el => {
+  //        if(el.id === product.id) {
+  //           setCart(counter)
+  //           let newProduct = {
+  //             ...product,
+  //           cantidad:  counter
+  //           }
+  //          let newCart = cart.filter(el => el.id !== product.id)
+  //          setCart([...newCart, newProduct]);
+  //        }else {
+  //          setCart([...cart, product])
+  //        }
+  //      })
+  //    }else {
+  //     setCart([...cart, product])
+  //    }
+  //  
+   }
+  
   return (
     <>
       <div className="container">
@@ -41,12 +42,12 @@ const ItemDetail = ({ product }) => {
                 height="340px"
               />
             </image>
-            <p className="text-white text-center fw-bold me-5">ARS : $ {product.price}</p>
+            <p className="text-white text-center fw-bold me-5">ARS : $ {product.price} </p>
             <div className="d-flex me-3">
               <ItemCount
-                counter={counter}
-                setCounter={setCounter}
+                product={product}
                 stock={product.stock}
+
               />
             </div>
           </div>
@@ -60,7 +61,7 @@ const ItemDetail = ({ product }) => {
         </Link>
         <button
           className="btn btn-outline-success border-0 rounded-pill m-2"
-          onClick={cartAdd}
+          onClick={()=> addCart(product.id)}
         >
           Add to Cart
         </button>
@@ -76,6 +77,7 @@ const ItemDetail = ({ product }) => {
       </article>
     </>
   );
-};
+}; 
+
 
 export default ItemDetail;

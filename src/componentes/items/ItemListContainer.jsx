@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ItemList from "./ItemList";
 import { data } from "../helpers/data";
+import { CartContext } from "../../context/CartContextProvider";
 
-const ItemListContainer = (props) => {
-  const [items, setItems] = useState([]);
+const ItemListContainer = () => {
+  const {items, setItems} = useContext(CartContext); 
 
   useEffect(() => {
     const Promises = new Promise((resolve, reject) => {
@@ -21,12 +22,7 @@ const ItemListContainer = (props) => {
   return (
     <>
       <div className="container">
-        <div className="text-center">
-          {/* <ItemCount
-        counter={counter}
-        setCounter={setCounter}
-      /> */}
-
+        <div className="text-center">        
           <ItemList items={items} />
         </div>
       </div>

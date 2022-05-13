@@ -30,8 +30,8 @@ const ItemDetailContainer = () => {
       {product.hasOwnProperty("title") ? (
         <ItemDetail product={product} />
       ) : (
-        <div>
-          <h5 className=" vh-100 text-center text-white">Loading....</h5>
+        <div className="container vh-100">
+          <h5 className="text-center text-white mt-4">Loading....</h5>
         </div>
       )}
     </>
