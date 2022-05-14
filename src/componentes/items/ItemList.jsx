@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContextProvider";
+import Loading from "../Loading/Loading";
 import Item from "./Item";
 
 const ItemList = ({ items }) => {
   //console.log(items)
+  const{loading} = useContext(CartContext)
   return (
     <>
       {items.length > 0 ? (
@@ -14,11 +18,13 @@ const ItemList = ({ items }) => {
             price={item.price}
           />
         ))
-      ) : (
-        <div className="vh-100">
-          <h3 className="fs-5 text text-white">Loading....</h3>
-        </div>
-      )}
+      ) : <>
+        {loading ?  (
+          <Loading />
+        ) :  <h2>Loaded!!</h2>
+      }
+      </>
+}
     </>
   );
 };

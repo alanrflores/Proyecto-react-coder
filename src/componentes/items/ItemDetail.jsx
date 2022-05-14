@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import ItemCount from "./ItemCount";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContextProvider";
 
-
 const ItemDetail = ({ product }) => {
-   const {cart, counter, setCounter, addCart} = useContext(CartContext)
-   
-   const addItems= (product) => {
+  const { addCart } = useContext(CartContext);
+
+  // const addItems= (product) => {
   // setCart([...cart, product])
   //    if(cart?.length > 0) {
   //      cart.forEach(el => {
@@ -26,42 +24,37 @@ const ItemDetail = ({ product }) => {
   //    }else {
   //     setCart([...cart, product])
   //    }
-  //  
-   }
-  
+  //
+  // }
+
   return (
     <>
       <div className="container">
         <div className="row justify-content-center flex-wrap">
           <div className="col-sm-12 col-md-6 col-lg-6">
-            <image className="d-flex justify-content-center me-4">
+            <div className="d-flex justify-content-center me-4">
               <img
                 src={product.pictureUrl}
                 className="img-fluid"
                 width="400px"
                 height="340px"
               />
-            </image>
-            <p className="text-white text-center fw-bold me-5">ARS : $ {product.price} </p>
-            <div className="d-flex me-3">
-              <ItemCount
-                product={product}
-                stock={product.stock}
-
-              />
             </div>
+            <p className="text-white text-center fw-bold me-5">
+              ARS : $ {product.price}{" "}
+            </p>
           </div>
         </div>
       </div>
       <div className="d-flex justify-content-evenly mt-2 me-4">
         <Link to="/cart">
           <button className="btn btn-outline-warning border-0 rounded-pill m-2 me-5">
-            Buy now
+            Finish Buy
           </button>
         </Link>
         <button
           className="btn btn-outline-success border-0 rounded-pill m-2"
-          onClick={()=> addCart(product.id)}
+          onClick={() => addCart(product.id)}
         >
           Add to Cart
         </button>
@@ -77,7 +70,6 @@ const ItemDetail = ({ product }) => {
       </article>
     </>
   );
-}; 
-
+};
 
 export default ItemDetail;

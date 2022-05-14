@@ -1,15 +1,19 @@
 import { NavLink } from "react-router-dom";
 import CardWidget from "../cards/CardWidget";
 import { FaShoppingBag } from "react-icons/fa";
+import { CartContext } from "../../context/CartContextProvider";
+import { useContext } from "react";
 
 const NavBar = () => {
+  const {cart} = useContext(CartContext);
+
   const imgUrl = "https://goodgamesguild.com/front/ggg/200x200.png";
 
   return (
     <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
       <div className="container-fluid">
         <img src={imgUrl} alt="" className="me-2" style={{ width: "3rem" }} />
-        <a className="navbar-brand  border-start rounded-pill p-2" href="#">
+        <a className="navbar-brand  border-start rounded-pill p-2" to="#">
           <h6 className="fw-bold">CoderGames</h6>
         </a>
         <button
@@ -38,6 +42,7 @@ const NavBar = () => {
           </ul>
           <div className="d-flex m-2 me-1">
             <CardWidget Icon={FaShoppingBag} color={"black"} size={"20px"} />
+            <span className="text-warning border-0 fw-bold pe-2 ms-1">{cart.length}</span>
           </div>
           <form className="d-flex">
             <input

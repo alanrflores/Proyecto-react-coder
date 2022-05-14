@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { data } from "../helpers/data";
+import { CartContext } from "../../context/CartContextProvider";
+import Loading from "../Loading/Loading";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
+  const {loading, setLoading} = useContext(CartContext)
 
   useEffect(() => {
     if (id) {
@@ -13,14 +16,16 @@ const ItemDetailContainer = () => {
 
       const GetPromises = new Promise((resolve, reject) => {
         setTimeout(() => {
+          setLoading(true)
           const game = data.find((item) => item.id === params);
           resolve(game);
-        }, 1000);
+        }, 2000);
       });
 
       GetPromises.then((res) => setProduct(res)).catch((err) =>
         console.log(err)
       );
+      setLoading(false)
     }
   }, [id]);
 
@@ -29,11 +34,12 @@ const ItemDetailContainer = () => {
     <>
       {product.hasOwnProperty("title") ? (
         <ItemDetail product={product} />
-      ) : (
-        <div className="container vh-100">
-          <h5 className="text-center text-white mt-4">Loading....</h5>
-        </div>
-      )}
+      ) : <>
+      {
+        loading ? <Loading /> : <h2>Loaded!</h2>
+      }
+      </>
+      }
     </>
   );
 };
