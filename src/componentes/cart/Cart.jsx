@@ -1,52 +1,63 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider";
 import Icon from "../icons/Icon";
 
 const Cart = () => {
-  const { cart, total, removeItem, clearItem, addItem } = useContext(CartContext);
+  const { cart, total, clearItem, removeQuantity, addQuantity } =
+    useContext(CartContext);
 
   return (
-    <div className="container vh-100">
-      <h1 className="text-white fs-3 ms-2">Your Cart</h1>
+    <>
+      <h1 className="text-white fs-3 ms-2 border-0 border-bottom p-2 rounded-pill">Your Cart</h1>
       {cart.length === 0 ? (
-        <h2 className=" border-bottom rounded-pill shadow p-3 mb-5 rounded text-center text-white">
-          Empty Cart
-        </h2>
+        <div className="vh-100">
+          <h2 className="text-center text-white fs-4">Empty Cart!</h2>
+          <div className="d-flex justify-content-center mt-5">
+            <Link to="/games">
+              <button className="mt-4 btn btn-outline-info border-0 border-bottom">
+                Search games now!
+              </button>
+            </Link>
+          </div>
+        </div>
       ) : (
         <>
           {cart.map((item, index) => (
-            <div key={index} className="d-flex justify-content-center">
-              <div className="card mb-3 bg-dark" style={{ width: "540px" }}>
-                <div className="row g-0 ">
-                  <div className="col-md-4">
-                    <img
-                      src={item.pictureUrl}
-                      className="img-fluid rounded-start"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h5 className="card-title text-white">{item.title}</h5>
-                      <p className="card-text text-white">{item.description}</p>
-                      {/* <div className="d-flex me-3">
-                      <ItemCount stock={item.stock} />
-                    </div> */}
-
+            <div
+              key={index}
+              className="d-flex flex-row justify-content-center bd-highlight mb-3"
+            >
+              <div className="p-2 bd-highlight">
+                <div className="card bg-dark" style={{ width: "14rem" }}>
+                  <img
+                    src={item.pictureUrl}
+                    class="card-img-top"
+                    alt={item.title}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title text-white fw-bold">
+                      {" "}
+                      Title : {item.title}
+                    </h5>
+                    <p className="card-text text-white fw-bold">
+                      STOCK AVAILABLE : {item.stock}
+                    </p>
+                    <div className="row">
                       <button
-                        className="btn btn-outline-success"
-                        onClick={() => addItem(item.id)}
+                        className="btn btn-outline-success border-bottom border-0"
+                        onClick={() => addQuantity(item.id)}
                       >
-                        Add Item
+                        Add
                       </button>
-                      <p className="card-text text-white m-2 ms-4">
+                      <p className="text-white text-center m-2 fw-bold">
                         {item.quantity}
                       </p>
                       <button
-                        className="btn btn-outline-danger"
-                        onClick={() => removeItem(item.id)}
+                        className="btn btn-outline-danger border-bottom border-0"
+                        onClick={() => removeQuantity(item.id)}
                       >
-                        Remove Item
+                        Remove
                       </button>
                       <div className="d-flex justify-content-end m-2">
                         <button
@@ -64,13 +75,19 @@ const Cart = () => {
           ))}
         </>
       )}
-      <div className="d-flex justify-content-center m-2">
-        <h3 className="text-white fs-4">Total: $ {total}</h3>
-        </div>
-        <div className="d-flex justify-content-center m-2">
-        <button className="btn btn-outline-warning border-0 border-bottom ">Pay</button>
-        </div>
-    </div>
+      <div className="d-flex flex-column justify-content-center">
+        <h3 className="text-white text-center fs-4 fw-bold">
+          Total: $ {total}
+        </h3>
+        <a
+          href="http://www.mercadopago.com.ar"
+          target="_blank"
+          className="btn btn-outline-warning border-0 border-bottom "
+        >
+          Pay
+        </a>
+      </div>
+    </>
   );
 };
 

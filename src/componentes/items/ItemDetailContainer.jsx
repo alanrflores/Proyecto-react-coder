@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
-  const {loading, setLoading} = useContext(CartContext)
+  const {setLoading} = useContext(CartContext)
 
   useEffect(() => {
     if (id) {
@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
       GetPromises.then((res) => setProduct(res)).catch((err) =>
         console.log(err)
       );
-      setLoading(false)
+    
     }
   }, [id]);
 
@@ -34,11 +34,7 @@ const ItemDetailContainer = () => {
     <>
       {product.hasOwnProperty("title") ? (
         <ItemDetail product={product} />
-      ) : <>
-      {
-        loading ? <Loading /> : <h2>Loaded!</h2>
-      }
-      </>
+      ) : (<Loading />)
       }
     </>
   );

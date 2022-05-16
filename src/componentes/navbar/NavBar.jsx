@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import CardWidget from "../cards/CardWidget";
 import { FaShoppingBag } from "react-icons/fa";
 import { CartContext } from "../../context/CartContextProvider";
 import { useContext } from "react";
 
 const NavBar = () => {
-  const {cart} = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   const imgUrl = "https://goodgamesguild.com/front/ggg/200x200.png";
 
@@ -40,10 +40,16 @@ const NavBar = () => {
               </NavLink>
             </li>
           </ul>
-          <div className="d-flex m-2 me-1">
-            <CardWidget Icon={FaShoppingBag} color={"black"} size={"20px"} />
-            <span className="text-warning border-0 fw-bold pe-2 ms-1">{cart.length}</span>
-          </div>
+          {cart.length > 0 && (
+            <div className="d-flex m-2 me-1">
+              <Link to="/cart">
+              <CardWidget Icon={FaShoppingBag} color={"black"} size={"20px"} />
+              </Link>
+              <span className="text-warning border-0 fw-bold pe-2 ms-1">
+                {cart.length}
+              </span>
+            </div>
+          )}
           <form className="d-flex">
             <input
               className="form-control me-2"
@@ -51,10 +57,7 @@ const NavBar = () => {
               placeholder="Search Games..."
               aria-label="Search"
             />
-            <button
-              className="btn btn-dark border-end"
-              type="submit"
-            >
+            <button className="btn btn-dark border-end" type="submit">
               Search
             </button>
           </form>

@@ -7,7 +7,6 @@ export const CartContext = createContext("");
 const CartContextProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const [counter, setCounter] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -20,9 +19,16 @@ const CartContextProvider = ({ children }) => {
     }
   }, []);
 
+  //Revisamos si se encuentra algo dentro de 'dataCart'
+  useEffect(() => {
+    const dataCart = JSON.parse(localStorage.getItem("dataCart"));
+    if (dataCart) {
+      setCart(dataCart);
+    }
+  }, []);
+
   //agregamos a carrito
   const addCart = (id) => {
-    console.log(id);
     const check = cart.every((item) => {
       return item.id !== id;
     });
@@ -31,12 +37,9 @@ const CartContextProvider = ({ children }) => {
         return item.id === id;
       });
       setCart([...cart, ...Data]);
+      localStorage.setItem("dataCart", JSON.stringify([...cart, ...Data]));
     } else {
-      Swal.fire(
-        'Good job!',
-        'The product was added correctly!',
-        'success'
-      );
+      Swal.fire("Good job!", "The product was added correctly!", "success");
     }
   };
 
@@ -63,21 +66,31 @@ const CartContextProvider = ({ children }) => {
       });
       //como se modifico el 'cart' lo guardamos dentro del 'setCart'
       setCart([...cart]);
+      localStorage.setItem("dataCart", JSON.stringify([...cart]))
     }
   };
 
   //sumamos cantidad
-  const addItem = (id) => {
-    cart.forEach((item) => {
-      if (item.id === id) {
-        item.quantity += 1;
-      }
-    });
-    setCart([...cart]);
+  const addQuantity = (item) => {
+    if (cart?.length > 0) {
+      cart.forEach((el) => {
+        if (el.id === item && el.quantity < el.stock) { 
+          let newItem = {
+            ...el,
+            quantity: el.quantity + 1,
+          };
+        
+          let newCart = cart.filter((el) => el.id !== item);
+         
+          setCart([...newCart, newItem]);
+          localStorage.setItem("dataCart", JSON.stringify([...newCart, newItem]));
+        }  
+      });
+    } 
   };
 
   //restamos cantidad
-  const removeItem = (id) => {
+  const removeQuantity = (id) => {
     cart.forEach((item) => {
       if (item.id === id) {
         item.quantity === 1 ? (item.quantity = 1) : (item.quantity -= 1);
@@ -86,25 +99,11 @@ const CartContextProvider = ({ children }) => {
     setCart([...cart]);
   };
 
-  //Revisamos si se encuentra algo dentro de 'dataCart'
-  useEffect(() => {
-    const dataCart = JSON.parse(localStorage.getItem("dataCart"));
-    if (dataCart) {
-      setCart(dataCart);
-    }
-  }, []);
-
-  //Guardamos con el setItem dentro de dataCart, parseamos lo que este dentro 'cart'
-  useEffect(() => {
-    localStorage.setItem("dataCart", JSON.stringify(cart));
-    //Cada vez que se haya un cambio dentro de cart, se va a ejecutar
-  }, [cart]);
-
-
+  //total
   useEffect(() => {
     const getTotal = () => {
       const res = cart.reduce((acc, item) => {
-        return acc + (item.price * item.quantity);
+        return acc + item.price * item.quantity;
       }, 0);
       setTotal(res);
     };
@@ -119,12 +118,10 @@ const CartContextProvider = ({ children }) => {
         cart,
         setCart,
         addCart,
-        counter,
         loading,
         setLoading,
-        setCounter,
-        removeItem,
-        addItem,
+        removeQuantity,
+        addQuantity,
         clearItem,
         total,
       }}
