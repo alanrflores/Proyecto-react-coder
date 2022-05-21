@@ -2,19 +2,9 @@ import React from "react";
 import style from "../items/Item.module.css"
 
 
- const SlideShow = ({ imagen }) => {
+ const SlideShow = ( {imagen} ) => {
 
-//     const imagens =()=>{
-//         if(imagen.includes(imagen[0])){
-//             console.log("true")
-//         }else{
-//             console.log("error")
-//         }
-   
-//     }
-//         console.log(imagens())
-   
-    //console.log(imagen)
+    console.log(imagen)
   return (
       <> 
            
@@ -25,13 +15,14 @@ import style from "../items/Item.module.css"
               >
                 <div className="carousel-inner">
                   <div className="carousel-item active">
-                   <img />
+
+                   <img src={imagen ? imagen[1] : ""} className={style.img} alt="..."/>
                   </div>
                   <div className="carousel-item">
-                    <img src="{imagen[1]}" className={style.img} alt="..." />
+                    <img src={imagen ? imagen[2] : ""} className={style.img} alt="..." />
                   </div>
                   <div className="carousel-item">
-                    <img src="{imagen[2]}" className={style.img} alt="..." />
+                    <img src={imagen ? imagen[3] : ""} className={style.img} alt="..." />
                   </div>
                 </div>
                 <button

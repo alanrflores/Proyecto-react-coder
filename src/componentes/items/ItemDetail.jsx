@@ -38,7 +38,7 @@ const ItemDetail = ({ product }) => {
             <div className="d-flex justify-content-center me-4">
             <div className={style.slide}>
               
-                  <SlideShow imagen ={product.All_picture}/>
+                  <SlideShow imagen={product?.All_picture}/>
                
             </div>
             </div>
