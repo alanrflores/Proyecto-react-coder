@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContextProvider";
+import  style  from "./Item.module.css"
+import SlideShow from "../slide/SlideShow";
 
 const ItemDetail = ({ product }) => {
   const { addCart } = useContext(CartContext);
+  const{ id, title, description, price, platforms } = product 
 
   // const addItems= (product) => {
   // setCart([...cart, product])
@@ -33,10 +36,14 @@ const ItemDetail = ({ product }) => {
         <div className="row justify-content-center flex-wrap">
           <div className="col-sm-12 col-md-6 col-lg-6">
             <div className="d-flex justify-content-center me-4">
-              <img src={product.pictureUrl} className="img-fluid" />
+            <div className={style.slide}>
+              
+                  <SlideShow imagen ={product.All_picture}/>
+               
             </div>
-            <p className="text-white text-center fw-bold me-5">
-              ARS : $ {product.price}{" "}
+            </div>
+            <p className="text-white text-center me-5">
+              ARS : $ {price}{" "}
             </p>
           </div>
         </div>
@@ -54,18 +61,18 @@ const ItemDetail = ({ product }) => {
         </Link>
         <button
           className="btn btn-outline-success border-0 rounded-pill m-2"
-          onClick={() => addCart(product.id)}
+          onClick={() => addCart(id)}
         >
           Add to Cart
         </button>
       </div>
       <article>
-        <h1 className="text-center fw-bold border-bottom rounded-pill">
-          {product.title}
-        </h1>
+        <h5 className="text-white border-bottom rounded-pill m-2 p-2">
+          {title}
+        </h5>
         <section className="bg-dark text-white border-0 rounded-pill p-3">
-          <p className="ms-2">{product.description}</p>
-          <p className="ms-2">Platform: {product.platforms}</p>
+          <p className="ms-2 text-white">Description: {description}</p>
+          <p className="ms-2">Platform: {platforms}</p>
         </section>
       </article>
     </>

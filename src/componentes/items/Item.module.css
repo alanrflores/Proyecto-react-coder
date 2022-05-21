@@ -1,0 +1,25 @@
+
+.imagen {
+    border-radius: 25px;
+    transition: transform .75s;
+    
+}
+.card:hover .imagen{
+  transform: scale(1.06);
+}
+
+.slide{
+  max-width: 1000px;
+  margin: 50px auto;
+  padding-top: 6px;
+ 
+  
+ 
+}
+.img{
+  border-radius: 30px;
+  object-fit: cover;
+  width: 900px;
+  height: 500px;
+  
+}

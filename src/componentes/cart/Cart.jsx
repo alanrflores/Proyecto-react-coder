@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider";
 import Icon from "../icons/Icon";
@@ -6,10 +6,32 @@ import Icon from "../icons/Icon";
 const Cart = () => {
   const { cart, total, clearItem, removeQuantity, addQuantity } =
     useContext(CartContext);
+  const [formulario, setFormulario] = useState({
+    buyer: {
+      email: "",
+      nombre: "",
+      apellido: "",
+      telefono: "",
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault(e);
+    console.log(formulario);
+  };
+
+  const handleChange = (e) => {
+    setFormulario((formulario) => ({
+      ...formulario,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
     <>
-      <h1 className="text-white fs-3 ms-2 border-0 border-bottom p-2 rounded-pill">Your Cart</h1>
+      <h1 className="text-white fs-3 ms-2 border-0 border-bottom p-2 rounded-pill">
+        Your Cart
+      </h1>
       {cart.length === 0 ? (
         <div className="vh-100">
           <h2 className="text-center text-white fs-4">Empty Cart!</h2>
@@ -36,11 +58,11 @@ const Cart = () => {
                     alt={item.title}
                   />
                   <div className="card-body">
-                    <h5 className="card-title text-white fw-bold">
+                    <h5 className="card-title text-white">
                       {" "}
                       Title : {item.title}
                     </h5>
-                    <p className="card-text text-white fw-bold">
+                    <p className="card-text text-white">
                       STOCK AVAILABLE : {item.stock}
                     </p>
                     <div className="row">
@@ -50,7 +72,7 @@ const Cart = () => {
                       >
                         Add
                       </button>
-                      <p className="text-white text-center m-2 fw-bold">
+                      <p className="text-white text-center m-2">
                         {item.quantity}
                       </p>
                       <button
@@ -86,6 +108,47 @@ const Cart = () => {
         >
           Pay
         </a>
+        <div className="container">
+          <div className="m-2">
+            <form className="d-flex flex-column p-2" onSubmit={handleSubmit}>
+              <input
+                className="m-2"
+                type="text"
+                nombre="email"
+                placeholder="Ingrese su email"
+                value={formulario.email}
+                onChange={handleChange}
+              />
+
+              <input
+                className="m-2"
+                type="text"
+                nombre="nombre"
+                placeholder="Ingrese su nombre"
+                value={formulario.nombre}
+                onChange={handleChange}
+              />
+
+              <input
+                className="m-2"
+                type="text"
+                nombre="apellido"
+                placeholder="Ingrese su apellido"
+                value={formulario.apellido}
+                onChange={handleChange}
+              />
+              <input
+                className="m-2"
+                type="number"
+                nombre="telefono"
+                placeholder="Ingrese su telefono"
+                value={formulario.telefono}
+                onChange={handleChange}
+              />
+              <button>enviar!</button>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );

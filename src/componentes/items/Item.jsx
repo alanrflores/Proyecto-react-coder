@@ -1,45 +1,42 @@
 import { NavLink } from "react-router-dom";
+import styles  from "./Item.module.css"
 
 const Item = ({ id, title, picture }) => {
   return (
     <>
-  
-      <div className="row row-cols-1 row-cols-md-2 g-4 text-white">
-        <div className="col">
-          <div className="card shadow bg-dark border-0 m-2">
-            <img src={picture} className="card-img-top img-fluid"  alt={title} />
-            <div className="card-body">
-              <h5 className="card-title">{title}</h5>
-              <p className="card-text">
-                <NavLink
-                  to={`detail/${id}`}
-                  className="btn btn-outline-warning border-0 fs-6 fw-bold"
-                >
-                  More Details
-                </NavLink>
-              </p>
-            </div>
+      <div
+        className={styles.card}
+        style={{ maxHeight: "480px", minHeight: "480px" }}
+      >
+        <div className="w-100" style={{ objectFit: "cover" }}>
+          <img
+            src={picture}
+            width="340px"
+            height="380px"
+            className={styles.imagen}
+            alt={title}
+          />
+        </div>
+        <div className="card-body">
+          <div>
+            <i>
+              <h5 className="card-title text-white text-center shadow border-0 border-bottom rounded-pill m-1 p-1 ">
+                {title}
+              </h5>
+            </i>
           </div>
+          <p className="card-text bg-dark">
+            <i>
+              <NavLink
+                to={`detail/${id}`}
+                className=" btn btn-outline-info border-0 rounded-pill opacity fs-6"
+              >
+                More Details
+              </NavLink>
+            </i>
+          </p>
         </div>
-        <div className="col">
-          <div className="card shadow bg-dark border-0 m-2">
-            <img src={picture} className="card-img-top" alt={title} />
-            <div className="card-body">
-              <h5 className="card-title">{title}</h5>
-              <p className="card-text">
-                <NavLink
-                  to={`detail/${id}`}
-                  className="btn btn-outline-warning border-0 fs-6 fw-bold"
-                >
-                  More Details
-                </NavLink>
-              </p>
-            </div>
-          </div>
-        </div>
-        </div>
-        
-    
+      </div>
     </>
   );
 };

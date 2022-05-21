@@ -6,6 +6,7 @@ import CartContextProvider from "./context/CartContextProvider"
 import Games from "./views/Games"
 import Home from "./views/Home"
 
+
 const App = () => {
 
     return (

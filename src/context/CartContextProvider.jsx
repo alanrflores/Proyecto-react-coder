@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { data } from "../componentes/helpers/data";
 import Swal from "sweetalert2";
 
 export const CartContext = createContext("");
@@ -10,14 +9,14 @@ const CartContextProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const item = data;
-    if (item) {
-      setItems(item);
-    } else {
-      setItems([]);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const item = data;
+  //   if (item) {
+  //     setItems(item);
+  //   } else {
+  //     setItems([]);
+  //   }
+  // }, []);
 
   //Revisamos si se encuentra algo dentro de 'dataCart'
   useEffect(() => {
@@ -66,7 +65,8 @@ const CartContextProvider = ({ children }) => {
       });
       //como se modifico el 'cart' lo guardamos dentro del 'setCart'
       setCart([...cart]);
-      localStorage.setItem("dataCart", JSON.stringify([...cart]))
+      //se guarda en el localStorage
+      localStorage.setItem("dataCart", JSON.stringify([...cart]));
     }
   };
 
@@ -74,19 +74,22 @@ const CartContextProvider = ({ children }) => {
   const addQuantity = (item) => {
     if (cart?.length > 0) {
       cart.forEach((el) => {
-        if (el.id === item && el.quantity < el.stock) { 
+        if (el.id === item && el.quantity < el.stock) {
           let newItem = {
             ...el,
             quantity: el.quantity + 1,
           };
-        
+
           let newCart = cart.filter((el) => el.id !== item);
-         
+
           setCart([...newCart, newItem]);
-          localStorage.setItem("dataCart", JSON.stringify([...newCart, newItem]));
-        }  
+          localStorage.setItem(
+            "dataCart",
+            JSON.stringify([...newCart, newItem])
+          );
+        }
       });
-    } 
+    }
   };
 
   //restamos cantidad

@@ -36,9 +36,9 @@ export const data = [
       title: "Marvel vs Capcom 3",
       stock: 10,
       description: "is a series of fighting games created by Capcom in which characters created by Marvel Comics and Capcom's own characters appear together.",
-      pictureUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Marvel_vs_Capcom_logo.png",
+      pictureUrl: "https://i.pinimg.com/originals/bd/a9/dc/bda9dc05586aa3def6d6664db8b515b8.png",
       price: 2500,
-      latforms: "All",
+      platforms: "All",
       quantity : 1
 
     }]
