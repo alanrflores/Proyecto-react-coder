@@ -10,7 +10,7 @@ const ItemList = ({ items }) => {
         <div className="row">
           {items.length > 0 ? (
             items.map((item, i) => (
-              <div className="col-sm-12 col-md-6 col-lg-6 p-2 mt-4">
+              <div key={i} className="col-sm-12 col-md-6 col-lg-4 p-2 mt-4">
               <Item
                 key={i}
                 id={item.id}

@@ -37,12 +37,13 @@ const Carrousel = ({ img1, color }) => {
 
             <div className="carousel-caption d-none d-md-block">
               <Link to="/games">
-                <button className="btn btn-outline-success border-0 border-bottom rounded-pill">
-                  Games
+              <button className="btn btn-outline-info border-0 rounded-pill">
+              <i>  Games </i>
                 </button>
+                
               </Link>
 
-              <p>See more games!</p>
+              <p className="border-0 border-bottom rounded-pill"><i>See more games! </i> </p>
             </div>
           </div>
           <div className="carousel-item">

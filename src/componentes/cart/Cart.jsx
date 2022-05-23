@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider";
 import Icon from "../icons/Icon";
 
-const Cart = () => {
-  const { cart, total, clearItem, removeQuantity, addQuantity } =
+const Cart = ({}) => {
+  const { items, setItems, cart, total, clearItem, removeQuantity, addQuantity } =
     useContext(CartContext);
+    console.log(cart)
   const [formulario, setFormulario] = useState({
     buyer: {
       email: "",
@@ -26,6 +27,7 @@ const Cart = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
 
   return (
     <>
@@ -101,13 +103,13 @@ const Cart = () => {
         <h3 className="text-white text-center fs-4 fw-bold">
           Total: $ {total}
         </h3>
-        <a
+        <Link
           href="http://www.mercadopago.com.ar"
           target="_blank"
           className="btn btn-outline-warning border-0 border-bottom "
         >
           Pay
-        </a>
+        </Link>
         <div className="container">
           <div className="m-2">
             <form className="d-flex flex-column p-2" onSubmit={handleSubmit}>

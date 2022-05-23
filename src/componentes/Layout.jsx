@@ -6,7 +6,7 @@ const Layout = () => {
     return (
         <>
             <NavBar />
-            <div className="container-fluid bg-dark">
+            <div className="container-fluid">
                 <Outlet />
             </div>
             <Footer />

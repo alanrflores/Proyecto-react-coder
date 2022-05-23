@@ -7,6 +7,7 @@ import { getDocs, collection } from "firebase/firestore";
 const ItemListContainer = () => {
   const { items, setItems, setLoading } = useContext(CartContext);
 
+  //traer colleccion de juegos
   const getData = async () => {
     const col = collection(db, "games");
     setLoading(true);
@@ -15,7 +16,6 @@ const ItemListContainer = () => {
       const result = data.docs.map(
         (doc) => (doc = { id: doc.id, ...doc.data() })
       );
-      console.log(result);
       setItems(result);
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ const ItemListContainer = () => {
 
   return (
     <>
-      <div className="container text-center">
+      <div className="text-center">
         <ItemList items={items} />
       </div>
     </>

@@ -8,7 +8,7 @@ import Home from "./views/Home"
 
 
 const App = () => {
-
+  
     return (
         <CartContextProvider>
         <BrowserRouter>

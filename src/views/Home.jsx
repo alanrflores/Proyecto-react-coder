@@ -1,17 +1,43 @@
-import Carrousel from "../componentes/carrousel/Carrousel";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import styles from "./home.module.css";
 
 const Home = () => {
-  const imgUrl1 =
-    "https://www.todofondos.net/wp-content/uploads/juegos-de-computadora-foto-de-portada-hd-768x432.jpg";
-  const color = "#000";
+
+const goToTop = ()=>{
+  window.scrollTo({
+    top:0,
+    behavior:'smooth',
+  });
+};
+useEffect(()=>{
+  goToTop()
+},[])
+
   return (
     <>
-      <div className="container">
-        <h2 className="fw-bold text-center border-bottom rounded-pill text-white">
-          Welcome
-        </h2>
-        <div className="row vh-100">
-          <Carrousel color={color} img1={imgUrl1} />
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <i>
+            <div className={styles.h2}>
+              <h2 className="text-center border-bottom p-1 rounded-pill text-white">
+                Welcome
+              </h2>
+            </div>
+            <article className={styles.article}>
+              <p className={styles.p}>
+                Discover the games you want, from exclusive hits to innovative
+                indies; they all come to life with the power of the PS5™, Xbox
+                Series™, etc.. console.
+              </p>
+            </article>
+            <i className={styles.i}>Go to Games</i>
+            <div className={styles.divLink}>
+              
+              <Link to="/games" className={styles.link}>More Details</Link>
+              
+            </div>
+          </i>
         </div>
       </div>
     </>

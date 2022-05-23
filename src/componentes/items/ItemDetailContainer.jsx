@@ -23,6 +23,7 @@ const ItemDetailContainer = () => {
       console.log(response);
 
       setProduct({ id: response.id, ...response });
+      
     } catch (error) {
       console.log(error);
     } finally {
@@ -30,6 +31,7 @@ const ItemDetailContainer = () => {
     }
   };
 
+  console.log(id)
   useEffect(() => {
     // if (id) {
     //   let params = parseInt(id);
@@ -56,11 +58,6 @@ const ItemDetailContainer = () => {
       ) : (
         <ItemDetail
           product={product}
-          id={product.id}
-          title={product.title}
-          description={product.description}
-          picture={product.pictureUrl}
-          price={product.price}
         />
       )}
     </>

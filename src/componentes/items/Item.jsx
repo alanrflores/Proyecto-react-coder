@@ -4,15 +4,13 @@ import styles  from "./Item.module.css"
 const Item = ({ id, title, picture }) => {
   return (
     <>
+
       <div
         className={styles.card}
-        style={{ maxHeight: "480px", minHeight: "480px" }}
       >
-        <div className="w-100" style={{ objectFit: "cover" }}>
+        <div className="w-100">
           <img
             src={picture}
-            width="340px"
-            height="380px"
             className={styles.imagen}
             alt={title}
           />
@@ -25,11 +23,11 @@ const Item = ({ id, title, picture }) => {
               </h5>
             </i>
           </div>
-          <p className="card-text bg-dark">
+          <p className="card-text">
             <i>
               <NavLink
                 to={`detail/${id}`}
-                className=" btn btn-outline-info border-0 rounded-pill opacity fs-6"
+                className=" btn btn-outline-dark border-0 rounded-pill fs-6"
               >
                 More Details
               </NavLink>
@@ -37,6 +35,7 @@ const Item = ({ id, title, picture }) => {
           </p>
         </div>
       </div>
+     
     </>
   );
 };
