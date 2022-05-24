@@ -1,19 +1,12 @@
 import { NavLink } from "react-router-dom";
-import styles  from "./Item.module.css"
+import styles from "./Item.module.css";
 
 const Item = ({ id, title, picture }) => {
   return (
     <>
-
-      <div
-        className={styles.card}
-      >
+      <div className={styles.card}>
         <div className="w-100">
-          <img
-            src={picture}
-            className={styles.imagen}
-            alt={title}
-          />
+          <img src={picture} className={styles.imagen} alt={title} />
         </div>
         <div className="card-body">
           <div>
@@ -35,7 +28,6 @@ const Item = ({ id, title, picture }) => {
           </p>
         </div>
       </div>
-     
     </>
   );
 };

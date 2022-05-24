@@ -23,7 +23,7 @@ const ItemListContainer = () => {
       setLoading(false);
     }
   };
-
+ 
   useEffect(() => {
     getData();
     //traer un solo games....

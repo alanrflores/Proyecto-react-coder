@@ -6,7 +6,6 @@ const ItemList = ({ items }) => {
 
   return (
     <>
-      
         <div className="row">
           {items.length > 0 ? (
             items.map((item, i) => (

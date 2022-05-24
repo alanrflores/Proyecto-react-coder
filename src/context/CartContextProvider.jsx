@@ -9,14 +9,14 @@ const CartContextProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const item = data;
-  //   if (item) {
-  //     setItems(item);
-  //   } else {
-  //     setItems([]);
-  //   }
-  // }, []);
+   useEffect(() => {
+     const item = items;
+     if (item) {
+       setItems(item);
+     } else {
+       setItems([]);
+     }
+   }, [items]);
 
   //Revisamos si se encuentra algo dentro de 'dataCart'
   useEffect(() => {

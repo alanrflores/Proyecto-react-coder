@@ -1,0 +1,52 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  gap: 10px;
+}
+
+.section {
+  height: 100vh;
+  margin: 8px;
+  padding: 8px;
+}
+.card {
+  height: 98%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+.card_body {
+  height: 100%;
+  width: 90%;
+  border-radius: 20px;
+  border-bottom: 4px solid;
+  box-shadow: inset;
+}
+
+.img {
+  padding: 3px;
+  border-radius: 20px;
+  width: 190px;
+  height: 200px;
+}
+.div_total {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ 
+  
+}
+.total {
+  padding: 4px;
+  height: 400px;
+  width: 400px;
+  background-color: rgba(240, 248, 255, 0.274);
+  border-radius: 20px;
+}
+.total_pay {
+    margin: 4px;
+    padding: 4px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
