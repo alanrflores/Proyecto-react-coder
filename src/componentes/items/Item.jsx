@@ -20,9 +20,9 @@ const Item = ({ id, title, picture }) => {
             <i>
               <NavLink
                 to={`detail/${id}`}
-                className=" btn btn-outline-dark border-0 rounded-pill fs-6"
+                className=" btn btn-outline-dark border-0 border-bottom"
               >
-                More Details
+                <i>More Details</i>
               </NavLink>
             </i>
           </p>

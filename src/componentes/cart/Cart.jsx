@@ -1,15 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider";
 import Icon from "../icons/Icon";
-import Confirm from "../items/confirmCart/Confirm";
 import styles from "./cart.module.css";
 
 const Cart = () => {
   const { cart, total, clearItem, removeQuantity, addQuantity } =
     useContext(CartContext);
-  const [change, setChange] = useState(false)
- 
+
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    goToTop();
+  }, []);
+
   return (
     <>
       <main className={styles.main}>
@@ -87,21 +95,13 @@ const Cart = () => {
               </h3>
 
               <div className={styles.total_pay}>
-                
-                  
-                
-                <Confirm disabled={false}
-                  onClick={() => { change ?  setChange(<Link
-                    to="http://www.mercadopago.com.ar"
-                    target="_blank"
-                    className="btn btn-outline-warning border-0 border-bottom"
-                  >
-                    <i>Pay</i>
-                  </Link>) : setChange(false)
-                     }}
-                />
-                
-               
+                <Link
+                  to="http://www.mercadopago.com.ar"
+                  target="_blank"
+                  className="btn btn-outline-warning border-0 border-bottom"
+                >
+                  <i>Pay</i>
+                </Link>
               </div>
             </div>
           </div>

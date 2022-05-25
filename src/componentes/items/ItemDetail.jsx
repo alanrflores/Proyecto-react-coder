@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { CartContext } from "../../context/CartContextProvider";
 import style from "./Item.module.css";
@@ -6,22 +6,44 @@ import SlideShow from "../slide/SlideShow";
 
 const ItemDetail = (props) => {
   const { addCart } = useContext(CartContext);
-  const {id, title, description, platforms, price, All_picture} = props
-
-  const goToTop = ()=>{
+  const { id, title, description, platforms, price, All_picture } = props;
+  
+  const goToTop = () => {
     window.scrollTo({
-      top:0,
-      behavior:'smooth',
+      top: 0,
+      behavior: "smooth",
     });
   };
-  useEffect(()=>{
-    goToTop()
-  },[])
+  useEffect(() => {
+    goToTop();
+  }, []);
 
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1);
+  };
+  const handleIndex = () => {
+    navigate("/");
+  };
 
   return (
     <>
-      <div className="container vh-100 w-100">
+      <section className="container vh-100 w-100">
+        <div className={style.navigate}>
+          <button
+            className="btn btn-outline-dark border-0 border-bottom"
+            onClick={handleBack}
+          >
+            <i>Back</i>{" "}
+          </button>
+          <button
+            className="btn btn-outline-dark border-0 border-bottom"
+            onClick={handleIndex}
+          >
+            <i>Ir al inicio</i>
+          </button>
+        </div>
+
         <div className="row justify-content-center flex-wrap">
           <div className="col-sm-12 col-md-6 col-lg-6">
             <div className="d-flex justify-content-center me-4">
@@ -32,38 +54,38 @@ const ItemDetail = (props) => {
             <p className="text-white text-center me-5">ARS : $ {price} </p>
           </div>
         </div>
-      </div>
-      <div className="d-flex justify-content-evenly mt-2 me-4">
+      </section>
+      <section className="d-flex justify-content-evenly mt-2 me-4">
         <Link to="/cart">
-          <button className="btn btn-outline-warning text-dark border-1 border-start border-end rounded-pill m-2 me-5">
+          <button className="btn btn-outline-warning text-dark border-0 border-bottom m-2 me-5">
             <i>Finish Buy</i>
           </button>
         </Link>
         <Link to="/games">
-          <button className="btn btn-outline-info text-dark border-1 border-start border-end rounded-pill m-2 me-5">
+          <button className="btn btn-outline-info text-dark border-0 border-bottom m-2 me-5">
             <i>Continue Shopping</i>
           </button>
         </Link>
         <button
-          className="btn btn-outline-success text-dark border-1 border-start border-end rounded-pill m-2"
+          className="btn btn-outline-success text-dark border-0 border-bottom m-2"
           onClick={() => addCart(id)}
         >
           <i>Add to Cart</i>
         </button>
-      </div>
-      <article>
+      </section>
+      <section>
         <h5 className="text-white border-bottom rounded-pill m-2 p-2">
           <i>{title}</i>
         </h5>
-        <section className={style.description}>
+        <article className={style.description}>
           <p className="ms-2 p-2 text-white">
             <i> Description: {description}</i>
           </p>
           <p className="ms-2 p-2 text-white">
             <i>Platform: {platforms}</i>{" "}
           </p>
-        </section>
-      </article>
+        </article>
+      </section>
     </>
   );
 };

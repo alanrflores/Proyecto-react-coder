@@ -29,7 +29,7 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     getIndividualData();
-  }, [id]);
+  }, []);
 
   return (
     // si loading es true, mostrame el loading y si no, mostrame el producto.

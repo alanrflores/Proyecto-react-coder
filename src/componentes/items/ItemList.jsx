@@ -6,10 +6,10 @@ const ItemList = ({ items }) => {
 
   return (
     <>
-        <div className="row">
-          {items.length > 0 ? (
-            items.map((item, i) => (
-              <div key={i} className="col-sm-12 col-md-6 col-lg-4 p-2 mt-4">
+      <div className="row">
+        {items.length > 0 ? (
+          items.map((item, i) => (
+            <div key={i} className="col-sm-12 col-md-6 col-lg-4 p-2 mt-4">
               <Item
                 key={i}
                 id={item.id}
@@ -18,14 +18,12 @@ const ItemList = ({ items }) => {
                 stock={item.stock}
                 price={item.price}
               />
-              </div>
-            ))
-          ) : (
-            <Loading />
-          )}
-          
-        </div>
-      
+            </div>
+          ))
+        ) : (
+          <Loading />
+        )}
+      </div>
     </>
   );
 };

@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 const NavBar = () => {
   const { cart } = useContext(CartContext);
+  
 
   const imgUrl = "https://goodgamesguild.com/front/ggg/200x200.png";
 
@@ -56,7 +57,8 @@ const NavBar = () => {
               type="search"
               placeholder="Search Games..."
               aria-label="Search"
-            />
+               />
+           
             <button className="btn btn-dark border-end" type="submit">
               Search
             </button>
