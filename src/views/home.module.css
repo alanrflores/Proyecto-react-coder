@@ -16,10 +16,9 @@
     display: flex;
     align-items: center;
     background-color: rgba(10, 10, 10, 0.212);
-    padding: 2px;
     margin: 2px;
-    height: 68%;
-    width: 62%;
+    height: 80%;
+    width: 70%;
     border-radius: 40px;
 }
 .h2{
@@ -49,6 +48,7 @@
 .divLink{
     display: flex;
     justify-content: center;
+    height: 50%;
     
 }
 .link{
@@ -56,12 +56,11 @@
     justify-content: center;
     text-decoration: none;
     color: black;
-    border: 1px solid rgb(7, 112, 250) ;
+    border: .5px solid rgb(7, 112, 250) ;
     border-radius: 20px;
     font-size: medium;
-    
-    width: 20%;
-    height: 15%;
+    width: 30%;
+    height: 45%;
     cursor: pointer;
     position: relative;
     overflow: hidden;

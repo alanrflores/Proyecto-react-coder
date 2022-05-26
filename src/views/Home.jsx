@@ -34,7 +34,7 @@ useEffect(()=>{
             <i className={styles.i}>Go to Games</i>
             <div className={styles.divLink}>
               
-              <Link to="/games" className={styles.link}>More Details</Link>
+              <Link to="/games" className={styles.link}><i className="text-center"> More Details</i></Link>
               
             </div>
           </i>
