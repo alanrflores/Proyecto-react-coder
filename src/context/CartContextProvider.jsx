@@ -8,16 +8,15 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
-  
 
-   useEffect(() => {
-     const item = items;
-     if (item) {
-       setItems(item);
-     } else {
-       setItems([]);
-     }
-   }, [items]);
+  useEffect(() => {
+    const item = items;
+    if (item) {
+      setItems(item);
+    } else {
+      setItems([]);
+    }
+  }, [items]);
 
   //Revisamos si se encuentra algo dentro de 'dataCart'
   useEffect(() => {
@@ -114,6 +113,10 @@ const CartContextProvider = ({ children }) => {
     getTotal();
   }, [cart]);
 
+  const validateAll = (campos)=>{
+    return campos.some((campo)=> campo === "")
+   }
+
   return (
     <CartContext.Provider
       value={{
@@ -128,6 +131,7 @@ const CartContextProvider = ({ children }) => {
         addQuantity,
         clearItem,
         total,
+        validateAll,
       }}
     >
       {children}

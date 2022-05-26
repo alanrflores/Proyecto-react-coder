@@ -1,8 +1,22 @@
-.main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
-  gap: 10px;
+.main{
+  display: flex;
+  justify-content: center;
 }
+
+.div {
+  background-image: url(https://gmedia.playstation.com/is/image/SIEPDC/ps5-games-hero-banner-desktop-03-en-07oct21?$4000px$&fmt=webp);
+  background-attachment: fixed;
+  border-radius: 20px;
+  background-size: cover;
+  padding: 10px;
+  width: 75%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
 
 .section {
   height: 100vh;
@@ -10,10 +24,12 @@
   padding: 8px;
 }
 .card {
+  background-color: rgba(0, 0, 0, 0.877);
   height: 98%;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
+  border-radius: 20px;
 }
 .card_body {
   height: 100%;
@@ -31,10 +47,8 @@
 }
 .div_total {
   display: flex;
-  flex-direction: row;
   justify-content: center;
  
-  
 }
 .total {
   padding: 4px;
@@ -44,9 +58,9 @@
   border-radius: 20px;
 }
 .total_pay {
-    margin: 4px;
-    padding: 4px;
+  margin: 4px;
+  padding: 4px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  
 }

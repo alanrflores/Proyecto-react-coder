@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContextProvider";
+import Formulario from "../formulario/Formulario";
 import Icon from "../icons/Icon";
 import styles from "./cart.module.css";
 
@@ -20,17 +21,20 @@ const Cart = () => {
 
   return (
     <>
-      <main className={styles.main}>
+    <main className={styles.main}>
+      <div className={styles.div}>
         {/* si esta vacio el carrito mostrame carrito vacio, y un boton hacia juegos y si no cargame los items */}
         {cart.length === 0 ? (
           <div className="vh-100">
-            <h2 className="text-center text-white fs-4">
+            <h2 className="text-center text-white border-bottom">
               <i> Empty Cart! </i>
             </h2>
             <div className="d-flex justify-content-center mt-5">
               <Link to="/games">
-                <button className="mt-4 btn btn-outline-info border-0 border-bottom">
+                <button className="mt-4 btn btn-outline-dark text-white border-0 border-bottom">
+                 <h4>
                   <i>Search games now!</i>
+                  </h4>
                 </button>
               </Link>
             </div>
@@ -44,15 +48,15 @@ const Cart = () => {
                   <div className={styles.card_body} style={{ width: "12rem" }}>
                     <img
                       src={item.pictureUrl}
-                      class={styles.img}
+                      className={styles.img}
                       alt={item.title}
                     />
                     <div className="card-body">
                       <h5 className="card-title">
                         {" "}
-                        <i>Title : {item.title}</i>
+                        <i className="text-white">Title : {item.title}</i>
                       </h5>
-                      <p className="card-text">
+                      <p className="card-text text-white">
                         <i>STOCK AVAILABLE : {item.stock}</i>
                       </p>
                       <div className="row">
@@ -90,24 +94,16 @@ const Cart = () => {
         {total ? (
           <div className={styles.div_total}>
             <div className={styles.total}>
-              <h3 className="text-center">
+              <Formulario />
+              <h3 className="text-center fw-bold">
                 <i>Total: $ {total}</i>
               </h3>
-
-              <div className={styles.total_pay}>
-                <Link
-                  to="http://www.mercadopago.com.ar"
-                  target="_blank"
-                  className="btn btn-outline-warning border-0 border-bottom"
-                >
-                  <i>Pay</i>
-                </Link>
-              </div>
             </div>
           </div>
         ) : (
           ""
         )}
+      </div>
       </main>
     </>
   );

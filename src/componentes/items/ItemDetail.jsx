@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContextProvider";
 import style from "./Item.module.css";
 import SlideShow from "../slide/SlideShow";
@@ -7,7 +7,8 @@ import SlideShow from "../slide/SlideShow";
 const ItemDetail = (props) => {
   const { addCart } = useContext(CartContext);
   const { id, title, description, platforms, price, All_picture } = props;
-  
+  const [confirm, setConfirm] = useState(false);
+
   const goToTop = () => {
     window.scrollTo({
       top: 0,
@@ -24,6 +25,24 @@ const ItemDetail = (props) => {
   };
   const handleIndex = () => {
     navigate("/");
+  };
+
+  const buttonConfirm = confirm ? (
+    <Link to="/cart">
+      <button className="btn btn-outline-warning border-0 border-bottom text-dark">
+        <i>Go to Cart</i>
+      </button>{" "}
+    </Link>
+  ) : (
+    <button className="btn btn-outline-success border-0 border-bottom text-dark">
+      {" "}
+      <i>Confirm</i>
+    </button>
+  );
+
+  const clickConfirm = () => {
+    setConfirm(true);
+    console.log("cumplido");
   };
 
   return (
@@ -56,11 +75,8 @@ const ItemDetail = (props) => {
         </div>
       </section>
       <section className="d-flex justify-content-evenly mt-2 me-4">
-        <Link to="/cart">
-          <button className="btn btn-outline-warning text-dark border-0 border-bottom m-2 me-5">
-            <i>Finish Buy</i>
-          </button>
-        </Link>
+        <i onClick={clickConfirm}>{buttonConfirm}</i>
+
         <Link to="/games">
           <button className="btn btn-outline-info text-dark border-0 border-bottom m-2 me-5">
             <i>Continue Shopping</i>

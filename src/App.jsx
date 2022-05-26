@@ -18,8 +18,9 @@ const App = () => {
                     <Route index element={<Home />} />
                     <Route path="/games" element={<Games />}/>
                     <Route path="games/detail/:id" element={<ItemDetailContainer />} />
+                    <Route path="games/:category" element={<ItemListContainer/>} />
                     <Route path="/cart" element={<Cart />} />
-                    {/* <Route path="/category"element={<ItemListContainer/>} /> */}
+                    
                     </Route>
             </Routes>
         </BrowserRouter>
