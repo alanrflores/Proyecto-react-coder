@@ -29,12 +29,12 @@ const ItemDetail = (props) => {
 
   const buttonConfirm = confirm ? (
     <Link to="/cart">
-      <button className="btn btn-outline-warning border-0 border-bottom text-dark">
+      <button className="btn btn-outline-warning border-0 border-bottom">
         <i>Go to Cart</i>
       </button>{" "}
     </Link>
   ) : (
-    <button className="btn btn-outline-success border-0 border-bottom text-dark">
+    <button className="btn btn-outline-success border-0 border-bottom">
       {" "}
       <i>Confirm</i>
     </button>
@@ -59,7 +59,7 @@ const ItemDetail = (props) => {
             className="btn btn-outline-dark border-0 border-bottom"
             onClick={handleIndex}
           >
-            <i>Ir al inicio</i>
+            <i>Go to Home</i>
           </button>
         </div>
 
@@ -79,12 +79,12 @@ const ItemDetail = (props) => {
         <i className="m-3" onClick={clickConfirm}>{buttonConfirm}</i>
 
         <Link to="/games">
-          <button className="btn btn-outline-info text-dark border-0 border-bottom m-3">
+          <button className="btn btn-outline-dark  border-0 border-bottom m-3">
             <i>Continue Shopping</i>
           </button>
         </Link>
         <button
-          className="btn btn-outline-success text-dark border-0 border-bottom m-3"
+          className="btn btn-outline-warning border-0 border-bottom m-3"
           onClick={() => addCart(id)}
         >
           <i>Add to Cart</i>

@@ -8,6 +8,7 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const item = items;
@@ -132,6 +133,8 @@ const CartContextProvider = ({ children }) => {
         clearItem,
         total,
         validateAll,
+        search,
+        setSearch,
       }}
     >
       {children}

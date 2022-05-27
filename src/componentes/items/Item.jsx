@@ -19,7 +19,7 @@ const Item = ({ id, title, picture }) => {
           <p className="card-text">
             <i>
               <NavLink
-                to={`detail/${id}`}
+                to={`/games/detail/${id}`}
                 className=" btn btn-outline-dark border-0 border-bottom"
               >
                 <i>More Details</i>
