@@ -1,6 +1,6 @@
 .card {
   padding: 10px;
-  max-height: 540px;
+  max-height: 560px;
   min-height: 450px;
   border: none;
   margin: 4px;
@@ -39,4 +39,13 @@
   object-fit: cover;
   width: 900px;
   height: 500px;
+}
+
+.sectionButton{
+  display: flex;
+  justify-content: center;
+  margin: 6px;
+}
+.button{
+  padding: 6px;
 }

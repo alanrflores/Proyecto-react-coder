@@ -54,9 +54,9 @@ const Cart = () => {
                     <div className="card-body">
                       <h5 className="card-title">
                         {" "}
-                        <i className="text-white">Title : {item.title}</i>
+                        <i className="fs-4">Title : {item.title}</i>
                       </h5>
-                      <p className="card-text text-white">
+                      <p className="card-text">
                         <i>STOCK AVAILABLE : {item.stock}</i>
                       </p>
                       <div className="row">
@@ -95,8 +95,8 @@ const Cart = () => {
           <div className={styles.div_total}>
             <div className={styles.total}>
               <Formulario />
-              <h3 className="text-center fw-bold">
-                <i>Total: $ {total}</i>
+              <h3 className="text-center fw-bold m-2">
+                <i className="">Total: $ {total}</i>
               </h3>
             </div>
           </div>

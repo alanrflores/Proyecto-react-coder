@@ -73,15 +73,18 @@ const Formulario = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="container">
-      <h3>
+    <form onSubmit={handleSubmit} className="container-fluid">
+      <div className="row">
+      <h3 className="text-center">
         {" "}
-        <i className="fw-bold">Datos</i>{" "}
+        <i className="fw-bold ms-4">Datos</i>{" "}
       </h3>
+      <span><hr /></span>
       {Object.keys(order.buyer).map((key, index) => (
+        <div className="text-center">
         <Input
           key={index}
-          className="mb-4"
+          className="mb-4 "
           name={`${key}`}
           value={key.value}
           onChange={handleChange}
@@ -89,13 +92,17 @@ const Formulario = () => {
           inputclassname={`form-control ${errors[key] && "is-invalid"}`}
           errors={errors}
         />
+        </div>
       ))}
+     
       <button
-        className="btn btn-outline-info border-0 border-bottom text-dark"
+        className="btn btn-outline-success border-0 border-bottom"
         type="submit"
       >
         Finish Buy
       </button>
+      <span><hr /></span>
+      </div>
     </form>
   );
 };

@@ -70,24 +70,26 @@ const ItemDetail = (props) => {
                 <SlideShow imagen={All_picture} />
               </div>
             </div>
-            <p className="text-white text-center me-5">ARS : $ {price} </p>
+            <p className="text-center">ARS : $ {price} </p>
           </div>
         </div>
       </section>
-      <section className="d-flex justify-content-evenly mt-2 me-4">
-        <i onClick={clickConfirm}>{buttonConfirm}</i>
+      <section className={style.sectionButton}>
+        <div className={style.button}>
+        <i className="m-3" onClick={clickConfirm}>{buttonConfirm}</i>
 
         <Link to="/games">
-          <button className="btn btn-outline-info text-dark border-0 border-bottom m-2 me-5">
+          <button className="btn btn-outline-info text-dark border-0 border-bottom m-3">
             <i>Continue Shopping</i>
           </button>
         </Link>
         <button
-          className="btn btn-outline-success text-dark border-0 border-bottom m-2"
+          className="btn btn-outline-success text-dark border-0 border-bottom m-3"
           onClick={() => addCart(id)}
         >
           <i>Add to Cart</i>
         </button>
+        </div>
       </section>
       <section>
         <h5 className="text-white border-bottom rounded-pill m-2 p-2">
