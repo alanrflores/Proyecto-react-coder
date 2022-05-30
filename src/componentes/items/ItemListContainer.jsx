@@ -4,8 +4,7 @@ import { CartContext } from "../../context/CartContextProvider";
 import db from "../service/Firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { useParams } from "react-router-dom";
-import Item from "./Item";
-import Search from "../search/Search";
+
 
 const ItemListContainer = () => {
   const { items, setItems, setLoading } = useContext(CartContext);

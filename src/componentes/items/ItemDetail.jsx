@@ -32,7 +32,7 @@ const ItemDetail = (props) => {
 
   const buttonConfirm = confirm ? (
     <Link to="/cart">
-      <button className="btn btn-outline-warning border-0 border-bottom">
+      <button className="btn btn-outline-info border-0 border-bottom">
         <i>Go to Cart</i>
       </button>{" "}
     </Link>
@@ -50,7 +50,7 @@ const ItemDetail = (props) => {
 
   return (
     <>
-      <section className="container">
+      <section className="">
         <div className={style.navigate}>
           <button
             className="btn btn-outline-dark border-0 border-bottom"

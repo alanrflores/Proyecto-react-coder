@@ -5,9 +5,7 @@ import { CartContext } from "../../context/CartContextProvider";
 import { useContext } from "react";
 
 const NavBar = () => {
-  const { cart, items, setItems} = useContext(CartContext);
-
-
+  const { cart } = useContext(CartContext);
 
   const imgUrl = "https://goodgamesguild.com/front/ggg/200x200.png";
 
@@ -32,27 +30,74 @@ const NavBar = () => {
         <div className="collapse navbar-collapse " id="navbarTogglerDemo02">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="me-4">
-              <NavLink className="nav-link text-white boder-0 border-bottom" to="/">
+              <NavLink
+                className="nav-link text-white boder-0 border-bottom"
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
             <li className="me-4">
-              <NavLink className="nav-link text-white border-0 border-bottom" to="/games">
+              <NavLink
+                className="nav-link text-white border-0 border-bottom"
+                to="/games"
+              >
                 Games
               </NavLink>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                to="#"
+                role="button"
+                aria-expanded="false"
+              >
+                Categoryes
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link className="dropdown-item" to="games/category/Action">
+                    Action
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="games/category/Adventure">
+                    Adventure
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="games/category/Shooting">
+                    Shooting
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="games/category/Fight">
+                    Fight
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="games/category/Sport">
+                    Sport
+                  </Link>
+                </li>
+              </ul>
             </li>
           </ul>
           {cart.length > 0 && (
             <div className="d-flex m-2 me-1">
               <Link to="/cart">
-              <CardWidget Icon={FaShoppingBag} color={"black"} size={"20px"} />
+                <CardWidget
+                  Icon={FaShoppingBag}
+                  color={"black"}
+                  size={"20px"}
+                />
               </Link>
-              <span className="text-warning border-0 fw-bold pe-2 ms-1">
+              <span className="text-info border-0 fw-bold pe-2 ms-1">
                 {cart.length}
               </span>
             </div>
           )}
-
         </div>
       </div>
     </nav>

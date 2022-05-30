@@ -6,7 +6,7 @@ import Layout from "./componentes/Layout"
 import CartContextProvider from "./context/CartContextProvider"
 import Games from "./views/Games"
 import Home from "./views/Home"
-
+import Error from "./componentes/error/Error"
 
 const App = () => {
   
@@ -23,7 +23,7 @@ const App = () => {
                         <Route path="detail/:id" element={<ItemDetailContainer />} />
                     </Route>
                     <Route path="/cart" element={<Cart />} />
-                    
+                    <Route path="*" element={<Error />} />
                     </Route>
             </Routes>
         </BrowserRouter>
