@@ -1,0 +1,24 @@
+.divLoader{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+}
+
+.loader{
+    transform: perspective(140px) rotateX(-45deg);
+    width: 42px;
+    height: 72px;
+    position: relative;
+    border: 2px solid #ffff;
+    animation: load 1.5s linear infinite alternate;
+}
+
+@keyframes load{
+ 0% {
+     box-shadow: 0 0 #ed3b65 inset;
+ }
+ 100%{
+     box-shadow: 0 -70px #ed3b65 inset;
+ }
+}

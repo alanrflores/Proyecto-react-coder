@@ -20,6 +20,7 @@ const ItemDetailContainer = () => {
       const result = await getDoc(document);
       let response = result.data();
       setProduct({ id: id, ...response });
+      // console.log(response)
     } catch (error) {
       console.log(error);
     } finally {

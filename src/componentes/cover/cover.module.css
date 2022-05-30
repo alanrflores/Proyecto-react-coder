@@ -1,0 +1,19 @@
+.coverContainer{
+width: 100%;
+height: 100 vh;
+object-fit: contain;
+box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 1);
+display: flex;
+justify-content: center;
+
+
+}
+
+.video{
+    width: 100%;
+    height: 100 vh;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+
+}

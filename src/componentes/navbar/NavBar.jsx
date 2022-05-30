@@ -5,8 +5,9 @@ import { CartContext } from "../../context/CartContextProvider";
 import { useContext } from "react";
 
 const NavBar = () => {
-  const { cart } = useContext(CartContext);
-  
+  const { cart, items, setItems} = useContext(CartContext);
+
+
 
   const imgUrl = "https://goodgamesguild.com/front/ggg/200x200.png";
 
@@ -18,7 +19,7 @@ const NavBar = () => {
           <h6 className="text-white border-start rounded-pill">CoderGames</h6>
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0 border-bottom"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarTogglerDemo02"
@@ -26,7 +27,7 @@ const NavBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon bg-white rounded"></span>
         </button>
         <div className="collapse navbar-collapse " id="navbarTogglerDemo02">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -51,18 +52,7 @@ const NavBar = () => {
               </span>
             </div>
           )}
-          <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search Games..."
-              aria-label="Search"
-               />
-           
-            <button className="btn btn-dark border-end" type="submit">
-              Search
-            </button>
-          </form>
+
         </div>
       </div>
     </nav>
