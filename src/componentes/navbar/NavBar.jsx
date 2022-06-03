@@ -3,10 +3,11 @@ import CardWidget from "../cards/CardWidget";
 import { FaShoppingBag } from "react-icons/fa";
 import { CartContext } from "../../context/CartContextProvider";
 import { useContext } from "react";
+import  { UserContext } from "../../context/UserProvider";
 
 const NavBar = () => {
   const { cart } = useContext(CartContext);
-
+  const {user , setUser , singOutUser} = useContext(UserContext)
   const imgUrl = "https://goodgamesguild.com/front/ggg/200x200.png";
 
   return (
