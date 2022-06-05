@@ -1,51 +1,70 @@
 import React, { useState , useContext }from 'react'
+import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
 
+
 const Register = () => {
-  const [email, setEmail] = useState([])
-  const [pass, setPass] = useState([])
- 
-  const {registerUser} = useContext(UserContext)
+  const [users, setUsers] = useState({
+    email: "",
+    password: "",
+  })
+  const [error, setError] = useState("")
+
+const {registerUser} = useContext(UserContext)
+
+ const navegate = useNavigate()
 
 const handleSubmit = async (e) => {
   e.preventDefault()
-  console.log('procesando form : ' , email, pass)
+  console.log(users)
+  setError("")
 try {
-   await registerUser(email, pass)
+   await registerUser(users.email, users.password)
+   navegate("/")
    console.log("usuario creado")
 } catch (error) {
   console.log(error.code)
-  alert('Este email ya fue registrado')
+  if(error.code === "auth/internal-error"){
+  setError("correo invalido")
+  }else if(error.code === "auth/email-already-exists"){
+    setError("Este correo de usuario ya existe")
+  }else if(error.code === "auth/invalid-password"){
+    setError("No es valido, debe ser una string con al menos seis caracteres")
+  }
 }
 
 }
 
 
   return (
-    <div>
-    <h1>Register</h1>
+    
+    <div className='container vh-100'>
+    <div className='register'>
+    <h1 className='text-center mt-2'>Register</h1>
     <hr />
-    <form onSubmit={handleSubmit}>
+    {error && <p>{error}</p>}
+    <form  onSubmit={handleSubmit}>
     <input 
+      className='form-control mt-2'
       type="email"
+      name="email"
       placeholder="ingrese su email"
-      value={email}
-      onChange={(e)=> setEmail(e.target.value)}
+      onChange={(e) => setUsers({ ...users, email: e.target.value })}
     />
     <input
+        className='form-control mt-2'
         type="password"
-         placeholder="ingrese su password"
-         value={pass}
-         onChange={(e)=> setPass(e.target.value)}
+        name='password'
+         placeholder="******"
+         onChange={(e) => setUsers({ ...users, password: e.target.value })}
     />
-    <button type='submit' >
-      Ingresar
+    <div className='d-flex justify-content-center'>
+    <button className='btn btn-outline-success border-0 border-bottom m-2' type='submit' >
+      Registrarse
     </button>
-    <button type='button'>
-      ¿No tienes cuenta?
-    </button>
+    </div>
     </form>
-   
+    </div>
     </div>
   )
 }

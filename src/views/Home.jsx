@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
 import styles from "./home.module.css";
 
 const Home = () => {
+const { users } = useContext(UserContext)
+console.log(users)
 
 const goToTop = ()=>{
   window.scrollTo({
@@ -14,15 +17,21 @@ useEffect(()=>{
   goToTop()
 },[])
 
+
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.title}>
           <i>
             <div className={styles.h2}>
-              <h2 className="text-center border-bottom p-1 rounded-pill text-white">
-                Welcome
+            
+            
+
+              <h2 className="text-center fw-bold border-bottom p-1 rounded-pill text-white">
+                Welcome <span className="text-warning fw-bold">{users.email}</span> 
               </h2>
+                 
             </div>
             <article className={styles.article}>
               <p className={styles.p}>
