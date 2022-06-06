@@ -1,0 +1,53 @@
+.register-container {
+  height: 100vh;
+}
+
+.register-form {
+  width: 75%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 10px;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+}
+
+.login > span {
+  margin-right: 20px;
+  margin-top: 8px;
+}
+.button-div {
+  margin-top: 4px;
+}
+
+@media only screen and (max-width: 900px) {
+  .register-container {
+    width: 100%;
+  }
+  .register-form {
+    width: 90%;
+  }
+
+  .login {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .login > span {
+    text-align: center;
+  }
+  .alert-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+}

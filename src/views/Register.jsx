@@ -1,72 +1,88 @@
-import React, { useState , useContext }from 'react'
-import { useNavigate } from 'react-router-dom'
-import { UserContext } from '../context/UserProvider'
-
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
+import Alert from "../componentes/alert/Alert";
+import "./Register.css";
 
 const Register = () => {
   const [users, setUsers] = useState({
     email: "",
     password: "",
-  })
-  const [error, setError] = useState("")
+  });
+  const [error, setError] = useState("");
 
-const {registerUser} = useContext(UserContext)
+  const { registerUser } = useContext(UserContext);
 
- const navegate = useNavigate()
+  const navegate = useNavigate();
 
-const handleSubmit = async (e) => {
-  e.preventDefault()
-  console.log(users)
-  setError("")
-try {
-   await registerUser(users.email, users.password)
-   navegate("/")
-   console.log("usuario creado")
-} catch (error) {
-  console.log(error.code)
-  if(error.code === "auth/internal-error"){
-  setError("correo invalido")
-  }else if(error.code === "auth/email-already-exists"){
-    setError("Este correo de usuario ya existe")
-  }else if(error.code === "auth/invalid-password"){
-    setError("No es valido, debe ser una string con al menos seis caracteres")
-  }
-}
-
-}
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(users);
+    setError("");
+    try {
+      await registerUser(users.email, users.password);
+      navegate("/");
+      console.log("usuario creado");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
-    
-    <div className='container vh-100'>
-    <div className='register'>
-    <h1 className='text-center mt-2'>Register</h1>
-    <hr />
-    {error && <p>{error}</p>}
-    <form  onSubmit={handleSubmit}>
-    <input 
-      className='form-control mt-2'
-      type="email"
-      name="email"
-      placeholder="ingrese su email"
-      onChange={(e) => setUsers({ ...users, email: e.target.value })}
-    />
-    <input
-        className='form-control mt-2'
-        type="password"
-        name='password'
-         placeholder="******"
-         onChange={(e) => setUsers({ ...users, password: e.target.value })}
-    />
-    <div className='d-flex justify-content-center'>
-    <button className='btn btn-outline-success border-0 border-bottom m-2' type='submit' >
-      Registrarse
-    </button>
+    <div className="register-container">
+      <h1 className="text-center">
+        <i>Check in</i>{" "}
+      </h1>
+      <hr />
+      {error && <Alert message={error} />}
+      <div className="d-flex justify-content-center">
+        <form className="register-form" onSubmit={handleSubmit}>
+          <label htmlFor="email" className="block m-2">
+            Email
+          </label>
+          <input
+            className="form-control shadow mt-2 mb-4 p-2 border-0 border-bottom rounded"
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            onChange={(e) => setUsers({ ...users, email: e.target.value })}
+          />
+          <label htmlFor="password" className="block m-2">
+            Password
+          </label>
+          <input
+            className="form-control shadow mt-2 mb-4 p-2 border-0 border-bottom rounded"
+            type="password"
+            name="password"
+            placeholder="******"
+            onChange={(e) => setUsers({ ...users, password: e.target.value })}
+          />
+          <div className="button-container">
+            <button
+              className="btn btn-outline-success border-0 border-bottom"
+              type="submit"
+            >
+              <i>Check in</i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="login">
+        <span>Already have an Account?</span>
+        <Link to="/login">
+          <div className="button-div">
+            <button
+              className="btn btn-outline-info border-bottom border-0"
+              type="submit"
+            >
+              <i>Login</i>
+            </button>
+          </div>
+        </Link>
+      </div>
+      <hr />
     </div>
-    </form>
-    </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

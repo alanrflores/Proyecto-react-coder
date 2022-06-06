@@ -4,20 +4,19 @@ import { UserContext } from "../context/UserProvider";
 import styles from "./home.module.css";
 
 const Home = () => {
-const { users } = useContext(UserContext)
-console.log(users)
+  const { users } = useContext(UserContext);
+  // console.log(users)
 
-const goToTop = ()=>{
-  window.scrollTo({
-    top:0,
-    behavior:'smooth',
-  });
-};
-useEffect(()=>{
-  goToTop()
-},[])
-
-
+  //se desplaza a la parte superior de la pagina
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    goToTop();
+  }, []);
 
   return (
     <>
@@ -25,13 +24,10 @@ useEffect(()=>{
         <div className={styles.title}>
           <i>
             <div className={styles.h2}>
-            
-            
-
               <h2 className="text-center fw-bold border-bottom p-1 rounded-pill text-white">
-                Welcome <span className="text-warning fw-bold">{users.email}</span> 
+                Welcome{" "}
+                <span className="text-warning fw-bold">{users.displayName || users.email}</span>
               </h2>
-                 
             </div>
             <article className={styles.article}>
               <p className={styles.p}>
@@ -42,9 +38,9 @@ useEffect(()=>{
             </article>
             <i className={styles.i}>Go to Games</i>
             <div className={styles.divLink}>
-              
-              <Link to="/games" className={styles.link}><i className="text-center"> More Details</i></Link>
-              
+              <Link to="/games" className={styles.link}>
+                <i className="text-center"> More Details</i>
+              </Link>
             </div>
           </i>
         </div>

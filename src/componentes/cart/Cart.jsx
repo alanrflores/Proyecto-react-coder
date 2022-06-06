@@ -8,7 +8,8 @@ import styles from "./cart.module.css";
 const Cart = () => {
   const { cart, total, clearItem, removeQuantity, addQuantity } =
     useContext(CartContext);
-
+    
+//se desplaza a la parte superior de la pagina
   const goToTop = () => {
     window.scrollTo({
       top: 0,

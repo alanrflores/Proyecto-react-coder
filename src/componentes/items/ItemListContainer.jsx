@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 
 const ItemListContainer = () => {
-  const { items, setItems, setLoading } = useContext(CartContext);
+  const { items, setItems} = useContext(CartContext);
   const { id } = useParams();
   const [search, setSearch] = useState("");
 
