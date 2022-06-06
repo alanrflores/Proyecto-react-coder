@@ -15,10 +15,11 @@ Tiene 2 usuarios registrados modo prueba para que ingreses.
 
 Puedes instalarlo desde npm
 
-Instalar dependencias con :
+Instalar dependencias con:
 
 `$ npm install`
-Correr con :
+
+Y correr con:
 
 `$ npm start`
 
