@@ -1,4 +1,5 @@
 CoderGames es una plataforma Ecommerce de juegos, con sus categorias, informacion y muchos mas... Además pide un login para poder ingresar! Tenes que registrarte o otra opción podes logearte con tu cuenta de Google. Tambien podes cambiar la contraseña puesta con email verdadero.
+Al momento de comprar la order se imprime en console.log.
 
 Tiene 2 usuarios registrados modo prueba para que ingreses.
 
