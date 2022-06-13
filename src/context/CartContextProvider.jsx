@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import {checkExistInTheCart} from "../componentes/check/check";
 
 export const CartContext = createContext("");
 
@@ -27,20 +28,32 @@ const CartContextProvider = ({ children }) => {
   }, []);
 
   //agregamos a carrito
-  const addCart = (id) => {
-    const check = cart.every((item) => {
-      return item.id !== id;
-    });
-    if (check) {
-      const Data = items.filter((item) => {
-        return item.id === id;
-      });
-      setCart([...cart, ...Data]);
-      localStorage.setItem("dataCart", JSON.stringify([...cart, ...Data]));
-    } else {
-      Swal.fire("Good job!", "The product was added correctly!", "success");
+  const addCart = (item) => {
+    if (checkExistInTheCart(cart, item)) {
+      setCart([...cart, item]);
+      localStorage.setItem("dataCart", JSON.stringify([...cart, item]));
+      Swal.fire("Good job!", "Added to cart!", "success");
+    
+      return;
     }
+    setCart([item]);
+    localStorage.setItem("dataCart", JSON.stringify([item]));
+    Swal.fire("Good job!", "Added to cart!", "success");
   };
+  // const addCart = (id) => {
+  //   const check = cart.every((item) => {
+  //     return item.id !== id;
+  //   });
+  //   if (check) {
+  //     const Data = items.filter((item) => {
+  //       return item.id === id;
+  //     });
+  //     setCart([...cart, ...Data]);
+  //     localStorage.setItem("dataCart", JSON.stringify([...cart, ...Data]));
+  //   } else {
+  //     Swal.fire("Good job!", "The product was added correctly!", "success");
+  //   }
+  // };
 
   //eliminamos el item por completo
   const clearItem = (id) => {
@@ -71,36 +84,36 @@ const CartContextProvider = ({ children }) => {
   };
 
   //sumamos cantidad
-  const addQuantity = (item) => {
-    if (cart?.length > 0) {
-      cart.forEach((el) => {
-        if (el.id === item && el.quantity < el.stock) {
-          let newItem = {
-            ...el,
-            quantity: el.quantity + 1,
-          };
+  // const addQuantity = (item) => {
+  //   if (cart?.length > 0) {
+  //     cart.forEach((el) => {
+  //       if (el.id === item && el.quantity < el.stock) {
+  //         let newItem = {
+  //           ...el,
+  //           quantity: el.quantity + 1,
+  //         };
 
-          let newCart = cart.filter((el) => el.id !== item);
+  //         let newCart = cart.filter((el) => el.id !== item);
 
-          setCart([...newCart, newItem]);
-          localStorage.setItem(
-            "dataCart",
-            JSON.stringify([...newCart, newItem])
-          );
-        }
-      });
-    }
-  };
+  //         setCart([...newCart, newItem]);
+  //         localStorage.setItem(
+  //           "dataCart",
+  //           JSON.stringify([...newCart, newItem])
+  //         );
+  //       }
+  //     });
+  //   }
+  // };
 
-  //restamos cantidad
-  const removeQuantity = (id) => {
-    cart.forEach((item) => {
-      if (item.id === id) {
-        item.quantity === 1 ? (item.quantity = 1) : (item.quantity -= 1);
-      }
-    });
-    setCart([...cart]);
-  };
+  // //restamos cantidad
+  // const removeQuantity = (id) => {
+  //   cart.forEach((item) => {
+  //     if (item.id === id) {
+  //       item.quantity === 1 ? (item.quantity = 1) : (item.quantity -= 1);
+  //     }
+  //   });
+  //   setCart([...cart]);
+  // };
 
   //total
   useEffect(() => {
@@ -128,8 +141,6 @@ const CartContextProvider = ({ children }) => {
         addCart,
         loading,
         setLoading,
-        removeQuantity,
-        addQuantity,
         clearItem,
         total,
         validateAll,

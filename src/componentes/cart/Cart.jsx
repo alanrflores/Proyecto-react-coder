@@ -6,7 +6,7 @@ import Icon from "../icons/Icon";
 import styles from "./cart.module.css";
 
 const Cart = () => {
-  const { cart, total, clearItem, removeQuantity, addQuantity } =
+  const { cart, total, clearItem } =
     useContext(CartContext);
     
 //se desplaza a la parte superior de la pagina
@@ -19,7 +19,7 @@ const Cart = () => {
   useEffect(() => {
     goToTop();
   }, []);
-
+ 
   return (
     <>
     <main className={styles.main}>
@@ -54,28 +54,15 @@ const Cart = () => {
                     />
                     <div className="card-body">
                       <h5 className="card-title">
-                        {" "}
-                        <i className="fs-4">Title : {item.title}</i>
+                      Title <br/> 
+                        <i>{item.title}</i>
                       </h5>
-                      <p className="card-text">
-                        <i>STOCK AVAILABLE : {item.stock}</i>
-                      </p>
+                      <h5 className="card-title">
+                      Platforms <br/>
+                        <i> {item.platforms}</i>
+                      </h5>
+                    
                       <div className="row">
-                        <button
-                          className="btn btn-outline-success border-bottom border-0"
-                          onClick={() => addQuantity(item.id)}
-                        >
-                          <i> Add </i>
-                        </button>
-                        <p className="text-center m-2">
-                          <i>{item.quantity}</i>
-                        </p>
-                        <button
-                          className="btn btn-outline-danger border-bottom border-0"
-                          onClick={() => removeQuantity(item.id)}
-                        >
-                          <i> Remove </i>
-                        </button>
                         <div className="d-flex justify-content-end m-2">
                           <button
                             onClick={() => clearItem(item.id)}

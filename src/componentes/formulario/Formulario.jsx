@@ -29,6 +29,7 @@ const Formulario = () => {
       const col = collection(db, "order");
       const orders = await addDoc(col, datos);
       console.log(orders);
+      Swal.fire(`Purchase ID: ${orders.id}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -47,7 +48,7 @@ const Formulario = () => {
     }
     Swal.fire(
       "Good job!",
-      "Your purchase order was correctly generated!",
+      "Your purchase order was correctly generated ",
       "success"
     );
     generateTicket({ datos: order });
@@ -75,33 +76,37 @@ const Formulario = () => {
   return (
     <form onSubmit={handleSubmit} className="container-fluid">
       <div className="row">
-      <h3 className="text-center">
-        {" "}
-        <i className="fw-bold ms-4">Datos</i>{" "}
-      </h3>
-      <span><hr /></span>
-      {Object.keys(order.buyer).map((key, index) => (
-        <div className="text-center">
-        <Input
-          key={index}
-          className="mb-4 "
-          name={`${key}`}
-          value={key.value}
-          onChange={handleChange}
-          placeholder={`${key}`}
-          inputclassname={`form-control ${errors[key] && "is-invalid"}`}
-          errors={errors}
-        />
-        </div>
-      ))}
-     
-      <button
-        className="btn btn-outline-success border-0 border-bottom"
-        type="submit"
-      >
-        Finish Buy
-      </button>
-      <span><hr /></span>
+        <h3 className="text-center">
+          {" "}
+          <i className="fw-bold ms-4">Datos</i>{" "}
+        </h3>
+        <span>
+          <hr />
+        </span>
+        {Object.keys(order.buyer).map((key, index) => (
+          <div  key={index} className="text-center">
+            <Input
+             
+              className="mb-4 "
+              name={`${key}`}
+              value={key.value}
+              onChange={handleChange}
+              placeholder={`${key}`}
+              inputclassname={`form-control ${errors[key] && "is-invalid"}`}
+              errors={errors}
+            />
+          </div>
+        ))}
+
+        <button
+          className="btn btn-outline-success border-0 border-bottom"
+          type="submit"
+        >
+          Finish Buy
+        </button>
+        <span>
+          <hr />
+        </span>
       </div>
     </form>
   );

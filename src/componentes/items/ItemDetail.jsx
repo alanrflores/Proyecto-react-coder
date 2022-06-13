@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/CartContextProvider";
+import { useEffect } from "react";
 import style from "./Item.module.css";
 import SlideShow from "../slide/SlideShow";
 import Cover from "../cover/Cover";
+import ItemCount from "./ItemCount";
 
 const ItemDetail = (props) => {
-  const { addCart } = useContext(CartContext);
-  const { id, title, description, platforms, price, All_picture, video } =
+ 
+  const { title, description, platforms, price, All_picture, video } =
     props;
-  const [confirm, setConfirm] = useState(false);
+  // const [confirm, setConfirm] = useState(false);
 
   const goToTop = () => {
     window.scrollTo({
@@ -20,7 +20,7 @@ const ItemDetail = (props) => {
   useEffect(() => {
     goToTop();
   }, []);
-  
+
   // button navegacion
   const navigate = useNavigate();
   const handleBack = () => {
@@ -30,23 +30,23 @@ const ItemDetail = (props) => {
     navigate("/");
   };
 
-  const buttonConfirm = confirm ? (
-    <Link to="/cart">
-      <button className="btn btn-outline-info border-0 border-bottom">
-        <i>Go to Cart</i>
-      </button>{" "}
-    </Link>
-  ) : (
-    <button className="btn btn-outline-success border-0 border-bottom">
-      {" "}
-      <i>Confirm</i>
-    </button>
-  );
+  // const buttonConfirm = confirm ? (
+  //   <Link to="/cart">
+  //     <button className="btn btn-outline-info border-0 border-bottom">
+  //       <i>Go to Cart</i>
+  //     </button>{" "}
+  //   </Link>
+  // ) : (
+  //   <button className="btn btn-outline-success border-0 border-bottom">
+  //     {" "}
+  //     <i>Confirm</i>
+  //   </button>
+  // );
 
-  const clickConfirm = () => {
-    setConfirm(true);
-    //console.log("cumplido");
-  };
+  // const clickConfirm = () => {
+  //   setConfirm(true);
+  //   //console.log("cumplido");
+  // };
 
   return (
     <>
@@ -75,6 +75,9 @@ const ItemDetail = (props) => {
           </div>
         </div>
       </section>
+      <div className="d-flex justify-content-center p-2">
+        {<ItemCount item={props} />}
+      </div>
       <div className={style.price}>
         <p> ARS : $ {price} </p>
       </div>
@@ -89,21 +92,15 @@ const ItemDetail = (props) => {
       </article>
       <section className={style.sectionButton}>
         <div className={style.button}>
-          <i className="m-3" onClick={clickConfirm}>
+          {/* <i className="m-3" onClick={clickConfirm}>
             {buttonConfirm}
-          </i>
+          </i> */}
 
           <Link to="/games">
             <button className="btn btn-outline-dark  border-0 border-bottom m-3">
               <i>Continue Shopping</i>
             </button>
           </Link>
-          <button
-            className="btn btn-outline-warning border-0 border-bottom m-3"
-            onClick={() => addCart(id)}
-          >
-            <i>Add to Cart</i>
-          </button>
         </div>
       </section>
       <section className={style.sectionCover}>
